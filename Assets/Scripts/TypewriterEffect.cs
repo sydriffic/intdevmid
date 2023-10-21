@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using JetBrains.Annotations;
 
 // i had to use a tutorial for the barebones of this
 // made by Christina Creates Games https://www.youtube.com/watch?v=UR_Rh0c4gbY&ab_channel=ChristinaCreatesGames
@@ -40,6 +39,7 @@ public class TypewriterEffect : MonoBehaviour
     {
 
         SetText(text);
+        Debug.Log(text);
     }
 
     void Update()
@@ -53,14 +53,17 @@ public class TypewriterEffect : MonoBehaviour
         if(coroutine != null)
         {
             StopCoroutine(coroutine); 
+            Debug.Log("coroutine stopped");
         }
         //set the text and make sure everything is set to 0
         textbox.text = text;
         textbox.maxVisibleCharacters = 0;
         visCharIndex = 0;
+    
 
         //starts the coroutine
         coroutine = StartCoroutine(routine:Typewriter());
+        Debug.Log("coroutine started");
     }
 
 //now from my two seconds of googling
@@ -73,12 +76,14 @@ public class TypewriterEffect : MonoBehaviour
         //while the text isnt done typing
         while(visCharIndex < textInfo.characterCount + 1)
         {
+            Debug.Log(textInfo.characterCount);
             //the character at This index
             //this does not use textbox.text because that could include tags
             //i.e. <b></b>
             //sorry to whoever has to read this code bc half of it is notetaking
             char c = textInfo.characterInfo[visCharIndex].character;
             textbox.maxVisibleCharacters++;
+            Debug.Log("mvc increased");
 
             //if its punctuation
             if(c == '?' || c == '.' || c == ',' || c == ':' ||
@@ -94,8 +99,9 @@ public class TypewriterEffect : MonoBehaviour
             }
 
             visCharIndex++;
+            Debug.Log("vci increased");
 
-            Debug.Log(textbox.maxVisibleCharacters + " " + visCharIndex);
+            //Debug.Log(textbox.maxVisibleCharacters + " " + visCharIndex);
         }
     }
 }
