@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    float movespeed = 20f;
+    float movespeed = 40f;
     public Camera mainCamera;
 
     // Start is called before the first frame update
@@ -42,23 +42,23 @@ public class PlayerMove : MonoBehaviour
 
         //boundaries
 
-        /*
-       if (newPos.y < -80)
+        
+       if (newPos.y < -385)
         {
-            newPos.y = -80;
+            newPos.y = -385;
         }
-        if (newPos.y > 80)
+        if (newPos.y > 385)
         {
-            newPos.y = 80;
+            newPos.y = 385;
         }
-        if (newPos.x < -71)
+        if (newPos.x < -295)
         {
-            newPos.x = -71;
+            newPos.x = -295;
         }
-        if (newPos.x > 71)
+        if (newPos.x > 295)
         {
-            newPos.x = 71;
-        }*/
+            newPos.x = 295;
+        }
         mainCamera.transform.position = new Vector3(newPos.x, newPos.y, -10);
         transform.position = newPos;
     }
